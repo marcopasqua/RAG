@@ -4,13 +4,13 @@ from typing import Union
 import uvicorn
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from routes import file
+from routes import file, chat
 
 
 app = FastAPI()
 
 app.include_router(file.router)
-# app.include_router(items.router)
+app.include_router(chat.router)
 # app.include_router(
 #     admin.router,
 #     prefix="/admin",
@@ -18,7 +18,6 @@ app.include_router(file.router)
 #     dependencies=[Depends(get_token_header)],
 #     responses={418: {"description": "I'm a teapot"}},
 # )
-
 
 
 @app.get("/")
